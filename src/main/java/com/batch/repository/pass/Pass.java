@@ -30,8 +30,13 @@ public class Pass extends BaseTimeEntity {
     private Integer remainingCount; // 남은 이용권 수 null이면 무제한
 
     private LocalDateTime startedAt;//시작날짜
-    private LocalDateTime endedAt; //종료날짜
-    private LocalDateTime expiredAt; //만료날짜 null이면 무제한
+    private LocalDateTime endedAt; //종료날짜 null이면 무제한
+    private LocalDateTime expiredAt; //만료날짜
+
+    public void addPass(PassStatus status, LocalDateTime expiredAt){
+        this.status = status;
+        this.expiredAt = expiredAt;
+    }
 
     @Builder
     public Pass(User user, Package aPackage, PassStatus status, Integer remainingCount, LocalDateTime startedAt, LocalDateTime endedAt, LocalDateTime expiredAt) {
